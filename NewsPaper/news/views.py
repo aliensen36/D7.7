@@ -1,5 +1,7 @@
 from datetime import datetime
-from django.views.generic import ListView, DetailView, CreateView
+
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .filters import PostFilter
 from .forms import PostForm
 from .models import Post
@@ -49,3 +51,60 @@ class NewsCreate(CreateView):
     model = Post
     # Шаблон страницы
     template_name = 'news_create.html'
+
+    def form_valid(self, form):
+        post = form.save(commit=False)
+        post.type = 'news'
+        return super().form_valid(form)
+
+# Представление для редактирования новости
+class NewsUpdate(UpdateView):
+    # Разработанная форма
+    form_class = PostForm
+    # Модель новости
+    model = Post
+    # Шаблон страницы
+    template_name = 'news_edit.html'
+
+# Представление для удаления новости
+class NewsDelete(DeleteView):
+    # Разработанная форма
+    form_class = PostForm
+    # Модель новости
+    model = Post
+    # Шаблон страницы
+    template_name = 'news_delete.html'
+    success_url = reverse_lazy('news')
+
+# Представление для создания статьи
+class ArticlesCreate(CreateView):
+    # Разработанная форма
+    form_class = PostForm
+    # Модель новости
+    model = Post
+    # Шаблон страницы
+    template_name = 'articles_create.html'
+
+    def form_valid(self, form):
+        post = form.save(commit=False)
+        post.type = 'article'
+        return super().form_valid(form)
+
+# Представление для редактирования статьи
+class ArticlesUpdate(UpdateView):
+    # Разработанная форма
+    form_class = PostForm
+    # Модель новости
+    model = Post
+    # Шаблон страницы
+    template_name = 'articles_edit.html'
+
+# Представление для удаления статьи
+class ArticlesDelete(DeleteView):
+    # Разработанная форма
+    form_class = PostForm
+    # Модель новости
+    model = Post
+    # Шаблон страницы
+    template_name = 'articles_delete.html'
+    success_url = reverse_lazy('news')

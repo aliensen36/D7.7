@@ -7,7 +7,7 @@ class PostFilter(FilterSet):
         field_name='created_date',
         widget=DateInput(attrs={'type': 'date'}),
         lookup_expr='date__gte',
-        label='Поиск по дате'
+        label='Поиск по дате',
     )
 
     class Meta:

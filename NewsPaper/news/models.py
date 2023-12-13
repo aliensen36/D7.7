@@ -38,7 +38,7 @@ class Post(models.Model):
     news = 'NE'
     POSTS = [
         (article, 'Статья'),
-        (news, 'Новости')
+        (news, 'Новость')
     ]
     # Cвязь «один ко многим» с моделью Author
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
@@ -76,7 +76,7 @@ class Post(models.Model):
         return f'{self.title.title()}: {self.text[:20]}'
 
     def get_absolute_url(self):
-        return reverse('post_detail', args=[str(self.id)])
+        return reverse('separate_news', args=[str(self.id)])
 
 
 class PostCategory(models.Model):
