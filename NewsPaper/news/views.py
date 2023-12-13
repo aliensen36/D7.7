@@ -54,7 +54,9 @@ class NewsCreate(CreateView):
 
     def form_valid(self, form):
         post = form.save(commit=False)
-        post.type = 'news'
+        if self.request.path == '/news/articles/create/':
+            post.type = 'AR'
+        post.save()
         return super().form_valid(form)
 
 # Представление для редактирования новости

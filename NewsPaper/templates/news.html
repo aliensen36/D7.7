@@ -20,6 +20,7 @@ Post
                 <td>Заголовок</td>
                 <td>Дата публикации</td>
                 <td>Превью статьи</td>
+                <td>Тип публикации</td>
             </tr>
 
             {% for separate_news in news %}
@@ -27,6 +28,7 @@ Post
                 <td>{{ separate_news.title|censor }}</td>
                 <td>{{ separate_news.created_date|date:'d M Y' }}</td>
                 <td>{{ separate_news.text|truncatewords:20|censor }}</td>
+                <td>{{ separate_news.get_type_display }}</td>
             </tr>
             {% endfor %}
         </table>

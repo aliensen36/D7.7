@@ -15,5 +15,4 @@ class PostFilter(FilterSet):
         fields = {
             'title': ['icontains'],
             'author': ['exact'],
-            'created_date': ['gt'],
         }
