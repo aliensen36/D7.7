@@ -68,8 +68,6 @@ class NewsUpdate(UpdateView):
 
 # Представление для удаления новости
 class NewsDelete(DeleteView):
-    # Разработанная форма
-    form_class = PostForm
     # Модель новости
     model = Post
     # Шаблон страницы
@@ -101,8 +99,6 @@ class ArticlesUpdate(UpdateView):
 
 # Представление для удаления статьи
 class ArticlesDelete(DeleteView):
-    # Разработанная форма
-    form_class = PostForm
     # Модель новости
     model = Post
     # Шаблон страницы
